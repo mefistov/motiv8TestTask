@@ -1,5 +1,5 @@
 import { PlaywrightTestConfig } from '@playwright/test';
-import { API_CONFIG } from './config/api-config';
+import { API_CONFIG } from './config/API-Config';
 
 const config: PlaywrightTestConfig = {
     testDir: './tests',
