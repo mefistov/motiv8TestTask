@@ -7,5 +7,5 @@ export enum APIEndpoints {
     POST_COMMENTS = '/posts',
     PUT_COMMENTS = '/posts/{id}',
     PATCH_COMMENTS = '/posts/{id}',
-    DELETE_COMMENTS = '/posts/{id}',
+    DELETE_COMMENT_BY_ID = '/posts/{id}',
 } 

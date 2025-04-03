@@ -47,6 +47,27 @@ export class APIHelper {
         return response;
     }
 
+    async delete(endpoint: string, params = {}) {
+        await allure.step(`DELETE ${endpoint}`, async () => {
+            await allure.attachment('Request URL', endpoint, 'text/plain');
+            if (Object.keys(params).length > 0) {
+                await allure.attachment(
+                    'Query Parameters', 
+                    JSON.stringify(params, null, 2), 
+                    'application/json'
+                );
+            }
+        });
+
+        const response = await this.request.get(endpoint, {
+            params,
+            headers: {
+                ...this.getDefaultHeaders()
+            }
+        });
+        return response;
+    }
+
     private getDefaultHeaders() {   
         return {
             'Content-Type': 'application/json',
