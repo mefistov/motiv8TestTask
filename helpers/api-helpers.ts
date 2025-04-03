@@ -10,6 +10,7 @@ export class APIHelper {
 
     async get(endpoint: string, params = {}) {
         await allure.step(`GET ${endpoint}`, async () => {
+            await allure.attachment('Request URL', endpoint, 'text/plain');
             if (Object.keys(params).length > 0) {
                 await allure.attachment(
                     'Query Parameters', 
