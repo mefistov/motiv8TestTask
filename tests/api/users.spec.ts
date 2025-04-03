@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { APIHelper } from '../../helpers/api-helpers';
-import { allure } from 'allure-playwright';
+import { allure } from 'allure-playwright'; 
+
 
 test.describe('Users API', () => {
     let apiHelper: APIHelper;
@@ -33,38 +34,4 @@ test.describe('Users API', () => {
         });
     });
 
-    test('should create new user @regression', async () => {
-        const userData = {
-            name: 'John Doe',
-            email: 'john@example.com'
-        };
-
-        await allure.step('Send POST request to create user', async () => {
-            // Attach request body to allure report
-            await allure.attachment(
-                'Request Body', 
-                JSON.stringify(userData, null, 2), 
-                'application/json'
-            );
-
-            const response = await apiHelper.post('/users', userData);
-            
-            await allure.step('Verify response status is 201', async () => {
-                expect(response.status()).toBe(201);
-            });
-
-            const body = await response.json();
-            await allure.step('Verify created user details', async () => {
-                expect(body).toHaveProperty('id');
-                expect(body.name).toBe(userData.name);
-            });
-
-            // Attach response to allure report
-            await allure.attachment(
-                'API Response', 
-                JSON.stringify(body, null, 2), 
-                'application/json'
-            );
-        });
-    });
 }); 

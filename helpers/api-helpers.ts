@@ -46,7 +46,10 @@ export class APIHelper {
         return response;
     }
 
-    private getDefaultHeaders() {
+    private getDefaultHeaders() {   
         return {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 
+            'Authorization': `Bearer ${process.env.API_TOKEN}`
+        }
+    }
+}
