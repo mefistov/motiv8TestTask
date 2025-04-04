@@ -4,12 +4,13 @@ import { allure } from 'allure-playwright';
 import { APIEndpoints } from  '../../config/api-endpoints';
 import { StatusCodes } from '../../config/status-codes';
 
-test.describe('DELETE Endpoints API tests', () => {
+test.describe('DELETE Endpoint API tests', () => {
     let apiHelper: APIHelper;
     const userId = 1;
     const invalidUserId = 'i404';
     const deletePostEndpoint = APIEndpoints.DELETE_COMMENT_BY_ID.replace('{id}', userId.toString());
     const deletePostInvalidId = APIEndpoints.DELETE_COMMENT_BY_ID.replace('{id}', invalidUserId);
+    const deletePostNoId = APIEndpoints.DELETE_COMMENT_BY_ID.replace('{id}', '');
     const deletePostEndpointInvalid = APIEndpoints.DELETE_COMMENT_BY_ID.replace('{id}', userId.toString()).replace('posts', 'postsinvalid');
 
     test.beforeEach(async ({ request }) => {
@@ -34,7 +35,7 @@ test.describe('DELETE Endpoints API tests', () => {
         });
     });
 
-    test('Delete comments by id: invalid endpoint   @smoke @regression', async () => {
+    test('Delete comments by id: invalid endpoint   @smoke @regression @negative', async () => {
         // Add allure steps
         await allure.step('Send DELETE request to {deletePostEndpointInvalid}', async () => {
             const response = await apiHelper.delete(deletePostEndpointInvalid);
@@ -52,10 +53,28 @@ test.describe('DELETE Endpoints API tests', () => {
         });
     });
 
-    test('Delete comments by id: invalid id @smoke @regression', async () => {
+    test('Delete comments by id: invalid id @smoke @regression @negative', async () => {
         // Add allure steps
         await allure.step('Send DELETE request to {deletePostInvalidId}', async () => {
             const response = await apiHelper.delete(deletePostInvalidId);
+            
+            await allure.step('Verify response status is 404', async () => {
+                expect(response.status()).toBe(StatusCodes.NOT_FOUND);
+            });
+
+            // Attach response to allure report
+            await allure.attachment(
+                'API Response', 
+                JSON.stringify(response.status(), null, 2), 
+                'application/json'
+            );
+        });
+    });
+
+    test('Delete comments by id: id not present @smoke @regression @negative', async () => {
+        // Add allure steps
+        await allure.step('Send DELETE request to {deletePostNoId}', async () => {
+            const response = await apiHelper.delete(deletePostNoId);
             
             await allure.step('Verify response status is 404', async () => {
                 expect(response.status()).toBe(StatusCodes.NOT_FOUND);
