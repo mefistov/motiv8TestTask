@@ -15,7 +15,7 @@ export class APIHelper {
                 JSON.stringify({
                     method: 'GET', 
                     url: API_CONFIG.baseURL + endpoint, 
-                    headers: this.getDefaultHeaders(), 
+                    headers: API_CONFIG.headers, 
                     params: params}), 'application/json');
             if (Object.keys(params).length > 0) {
                 await allure.attachment(
@@ -29,7 +29,7 @@ export class APIHelper {
         const response = await this.request.get(endpoint, {
             params,
             headers: {
-                ...this.getDefaultHeaders()
+                ...API_CONFIG.headers,
             }
         });
         return response;
@@ -40,9 +40,9 @@ export class APIHelper {
             await allure.attachment(
                 'Request Details', 
                 JSON.stringify({
-                    method: 'GET', 
+                    method: 'POST', 
                     url: API_CONFIG.baseURL + endpoint, 
-                    headers: this.getDefaultHeaders()}), 'application/json');
+                    headers: API_CONFIG.headers}), 'application/json');
             await allure.attachment(
                 'Request Body', 
                 JSON.stringify(data, null, 2), 
@@ -53,7 +53,30 @@ export class APIHelper {
         const response = await this.request.post(endpoint, {
             data,
             headers: {
-                ...this.getDefaultHeaders()
+                ...API_CONFIG.headers,
+            }
+        });
+        return response;
+    }
+
+    async put(endpoint: string, data: any) {
+        await allure.step(`PUT ${endpoint}`, async () => {
+            await allure.attachment('Request Details', 
+                JSON.stringify({
+                    method: 'PUT', 
+                    url: API_CONFIG.baseURL + endpoint, 
+                    headers: API_CONFIG.headers}), 'application/json');
+            await allure.attachment(
+                'Request Body', 
+                JSON.stringify(data, null, 2), 
+                'application/json'
+            );
+        });
+
+        const response = await this.request.put(endpoint, {
+            data,
+            headers: {
+                ...API_CONFIG.headers,
             }
         });
         return response;
@@ -65,7 +88,7 @@ export class APIHelper {
                 JSON.stringify({
                     method: 'DELETE', 
                     url: API_CONFIG.baseURL + endpoint, 
-                    headers: this.getDefaultHeaders(), 
+                    headers: API_CONFIG.headers, 
                     params: params}), 'application/json');
             if (Object.keys(params).length > 0) {
                 await allure.attachment(
@@ -76,19 +99,12 @@ export class APIHelper {
             }
         });
 
-        const response = await this.request.get(endpoint, {
+        const response = await this.request.delete(endpoint, {
             params,
             headers: {
-                ...this.getDefaultHeaders()
+                ...API_CONFIG.headers,
             }
         });
         return response;
-    }
-
-    private getDefaultHeaders() {   
-        return {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.API_TOKEN}`
-        }
     }
 }

@@ -4,7 +4,7 @@ import { allure } from 'allure-playwright';
 import { APIEndpoints } from  '../../config/api-endpoints';
 import { StatusCodes } from '../../config/status-codes';
 import { PostResponceBodyObjectModel } from '../../models/PostResponceBodyObjectModel';
-import { TestDataGenerator } from '../../helpers/TestDataGenerator';
+import { PostBodyTestDataGenerator } from '../../helpers/PostBodyTestDataGenerator';
 
 test.describe('POST Endpoint API tests', () => {
     let apiHelper: APIHelper;
@@ -12,8 +12,9 @@ test.describe('POST Endpoint API tests', () => {
     const postEndpoint = APIEndpoints.POST_COMMENTS;
     const postEndpointInvalid = APIEndpoints.POST_COMMENTS.replace('posts', 'postsinvalid');
 
-    const postBodyDefault = TestDataGenerator.defaultPostRequestBody();
-    const postBodyGenerated = TestDataGenerator.generatePostResponceBody();
+    const postBodyDefault = PostBodyTestDataGenerator.defaultPostRequestBody();
+    const postBodyGenerated = PostBodyTestDataGenerator.generatePostResponceBody();
+
     const postEmptyBodyProperties = {
         title: '',
         body: '',

@@ -1,6 +1,6 @@
 import { PostRequestBodyObjectModel } from "../models/PostRequestBodyObjectModel";
 
-export class TestDataGenerator {
+export class PostBodyTestDataGenerator {
     userId: number;
     title: string;
     body: string;
