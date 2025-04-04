@@ -4,6 +4,7 @@ import { API_CONFIG } from './config/api-config';
 const config: PlaywrightTestConfig = {
     testDir: './tests',
     timeout: 30000,
+    workers: 4, 
     use: {
         baseURL: API_CONFIG.baseURL,
         extraHTTPHeaders: API_CONFIG.headers,
