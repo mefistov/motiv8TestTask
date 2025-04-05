@@ -24,9 +24,9 @@ test.describe('PUT Endpoint API tests', () => {
         apiHelper = new APIHelper(request);
     });
 
-    test('Update new post with default data @smoke @regression @positive @put', async () => {
+    test('Update new post with default data @smoke @regression @put @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to putEndpoint', async () => {
+        await allure.step('Send Post request to ' + putEndpoint, async () => {
             const response = await apiHelper.put(putEndpoint, putDefaultBody);
             
             await allure.step('Verify response status is 200', async () => {
@@ -65,9 +65,9 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with random data @smoke @regression @positive @put', async () => {
+    test('Update new post with random data @smoke @regression @put @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to putEndpoint', async () => {
+        await allure.step('Send Post request to ' + putEndpoint, async () => {
             const response = await apiHelper.put(putEndpoint, putRandomBodyData);
             
             await allure.step('Verify response status is 200', async () => {
@@ -106,9 +106,9 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with random data and userId @smoke @regression @positive @put', async () => {
+    test('Update new post with random data and userId @smoke @regression @put @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to putEndpoint', async () => {
+        await allure.step('Send Post request to ' + putEndpointRandomUserId, async () => {
             const response = await apiHelper.put(putEndpointRandomUserId, putRandomBodyData);
             
             await allure.step('Verify response status is 200', async () => {
@@ -147,9 +147,9 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with empty body and valid userId @smoke @regression @positive @put', async () => {
+    test('Update new post with empty body and valid userId @smoke @regression @put @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to putEndpoint', async () => {
+        await allure.step('Send Post request to ' + putEndpointRandomUserId, async () => {
             const response = await apiHelper.put(putEndpointRandomUserId, putEmptyBody);
             
             await allure.step('Verify response status is 200', async () => {
@@ -179,9 +179,9 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with default data and invalid userId @smoke @regression @positive @put', async () => {
+    test('Update new post with default data and invalid userId @smoke @regression @put @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to putEndpoint', async () => {
+        await allure.step('Send Post request to ' + putEndpointInvalidUserId, async () => {
             const response = await apiHelper.put(putEndpointInvalidUserId, putEmptyBody);
             
             await allure.step('Verify response status is 500', async () => {
@@ -197,9 +197,9 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with empty body and invalid userId @smoke @regression @positive @put', async () => {
+    test('Update new post with empty body and invalid userId @smoke @regression @put @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to putEndpoint', async () => {
+        await allure.step('Send Post request to ' + putEndpointInvalidUserId, async () => {
             const response = await apiHelper.put(putEndpointInvalidUserId, putDefaultBody);
             
             await allure.step('Verify response status is 500', async () => {

@@ -33,9 +33,9 @@ test.describe('POST Endpoint API tests', () => {
     });
 
 
-    test('Post new post with default data @smoke @regression @positive @post', async () => {
+    test('Post new post with default data @smoke @regression @post @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to postEndpoint', async () => {
+        await allure.step('Send Post request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postBodyDefault);
             
             await allure.step('Verify response status is 201', async () => {
@@ -73,9 +73,9 @@ test.describe('POST Endpoint API tests', () => {
         });
     });
 
-    test('Post new post with generated data @smoke @regression @positive @post', async () => {
+    test('Post new post with generated data @smoke @regression @post @positive', async () => {
         // Add allure steps
-        await allure.step('Send Post request to postEndpoint', async () => {
+        await allure.step('Send Post request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postBodyGenerated);
             
             await allure.step('Verify response status is 201', async () => {
@@ -85,6 +85,7 @@ test.describe('POST Endpoint API tests', () => {
             const body = await response.json() as PostResponceBodyObjectModel;
 
             await allure.step('Verify response body', async () => {
+                // Verify response body contains required fields
                 expect(body).toHaveProperty('id');
                 expect(body).toHaveProperty('title');
                 expect(body).toHaveProperty('body');
@@ -114,7 +115,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('Post new post with empty body parameters @smoke @regression @positive @post @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to getPostsEndpoint', async () => {
+        await allure.step('Send GET request to '+ postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postEmptyBodyProperties);
             
             await allure.step('Verify response status is 422', async () => {
@@ -132,7 +133,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('Post new post with empty body @smoke @regression @positive @post @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to getPostsEndpoint', async () => {
+        await allure.step('Send GET request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postEmptyBody);
             
             await allure.step('Verify response status is 422', async () => {
@@ -150,7 +151,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('Post new post with invalid body parameters types @smoke @regression @positive @post @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to getPostsEndpoint', async () => {
+        await allure.step('Send GET request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postBodyInvalidPropertysTypes);
             
             await allure.step('Verify response status is 422', async () => {
@@ -168,7 +169,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('Post new post with invalid endpoint value and default body @smoke @regression @positive @post @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to getPostsEndpoint', async () => {
+        await allure.step('Send GET request to ' + postEndpointInvalid, async () => {
             const response = await apiHelper.post(postEndpointInvalid, postBodyDefault);
             
             await allure.step('Verify response status is 404', async () => {

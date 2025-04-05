@@ -17,9 +17,9 @@ test.describe('DELETE Endpoint API tests', () => {
         apiHelper = new APIHelper(request);
     });
 
-    test('Delete comments by id @smoke @regression', async () => {
+    test('Delete comments by id @smoke @regression @delete @positive', async () => {
         // Add allure steps
-        await allure.step('Send DELETE request to {deletePostEndpoint}', async () => {
+        await allure.step('Send DELETE request to ' + deletePostEndpoint, async () => {
             const response = await apiHelper.delete(deletePostEndpoint);
             
             await allure.step('Verify response status is 200', async () => {
@@ -35,9 +35,9 @@ test.describe('DELETE Endpoint API tests', () => {
         });
     });
 
-    test('Delete comments by id: invalid endpoint   @smoke @regression @negative', async () => {
+    test('Delete comments by id: invalid endpoint   @smoke @regression @delete @negative', async () => {
         // Add allure steps
-        await allure.step('Send DELETE request to {deletePostEndpointInvalid}', async () => {
+        await allure.step('Send DELETE request to ' + deletePostEndpointInvalid, async () => {
             const response = await apiHelper.delete(deletePostEndpointInvalid);
             
             await allure.step('Verify response status is 404', async () => {
@@ -53,9 +53,9 @@ test.describe('DELETE Endpoint API tests', () => {
         });
     });
 
-    test('Delete comments by id: invalid id @smoke @regression @negative', async () => {
+    test('Delete comments by id: invalid id @smoke @regression @delete @negative', async () => {
         // Add allure steps
-        await allure.step('Send DELETE request to {deletePostInvalidId}', async () => {
+        await allure.step('Send DELETE request to ' + deletePostInvalidId, async () => {
             const response = await apiHelper.delete(deletePostInvalidId);
             
             await allure.step('Verify response status is 404', async () => {
@@ -71,9 +71,9 @@ test.describe('DELETE Endpoint API tests', () => {
         });
     });
 
-    test('Delete comments by id: id not present @smoke @regression @negative', async () => {
+    test('Delete comments by id: id not present @smoke @regression @delete @negative', async () => {
         // Add allure steps
-        await allure.step('Send DELETE request to {deletePostNoId}', async () => {
+        await allure.step('Send DELETE request to ' + deletePostNoId, async () => {
             const response = await apiHelper.delete(deletePostNoId);
             
             await allure.step('Verify response status is 404', async () => {

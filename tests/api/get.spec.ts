@@ -31,9 +31,9 @@ test.describe('GET Endpoints API tests', () => {
         apiHelper = new APIHelper(request);
     });
 
-    test('Get all posts @smoke @regression', async () => {
+    test('Get all posts @smoke @regression @get @positive', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostsEndpoint}', async () => {
+        await allure.step('Send GET request to ' + getPostsEndpoint, async () => {
             const response = await apiHelper.get(getPostsEndpoint);
             
             await allure.step('Verify response status is 200', async () => {
@@ -44,11 +44,13 @@ test.describe('GET Endpoints API tests', () => {
             //console.log(body);
             await allure.step('Verify response body contains required fields', async () => {
                 for(let bodyobj of body) {
+                // Verify response body contains required fields
                 expect(bodyobj).toHaveProperty('userId');
                 expect(bodyobj).toHaveProperty('id');
                 expect(bodyobj).toHaveProperty('title');
                 expect(bodyobj).toHaveProperty('body');
 
+                // Verify response body fields types
                 expect(typeof bodyobj.userId).toBe('number');
                 expect(typeof bodyobj.id).toBe('number');
                 expect(typeof bodyobj.title).toBe('string');
@@ -65,9 +67,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get all posts with invalid endpoint @smoke @regression @negative', async () => {
+    test('Get all posts with invalid endpoint @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostsEndpointInvalid}', async () => {
+        await allure.step('Send GET request to ' + getPostsEndpointInvalid, async () => {
             const response = await apiHelper.get(getPostsEndpointInvalid);
             
             await allure.step('Verify response status is 404', async () => {
@@ -83,9 +85,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get post by id @smoke @regression', async () => {
+    test('Get post by id @smoke @regression @get @positive', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostByIdEndpoint}', async () => {
+        await allure.step('Send GET request to ' + getPostByIdEndpoint, async () => {
             const response = await apiHelper.get(getPostByIdEndpoint);
             
             await allure.step('Verify response status is 200', async () => {
@@ -95,6 +97,7 @@ test.describe('GET Endpoints API tests', () => {
             const body = await response.json() as GetResponceObjectModel;
             //console.log(bodyobj);
             await allure.step('Verify response body contains required fields', async () => {
+                // Verify response body contains required fields
                 expect(body).toHaveProperty('userId');
                 expect(body).toHaveProperty('id');
                 expect(body).toHaveProperty('title');
@@ -119,9 +122,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get post by id invalid endpoint @smoke @regression @negative', async () => {
+    test('Get post by id invalid endpoint @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostByIdEndpointInvalid}', async () => {
+        await allure.step('Send GET request to ' + getPostByIdEndpointInvalid, async () => {
             const response = await apiHelper.get(getPostByIdEndpointInvalid);
             
             await allure.step('Verify response status is 404', async () => {
@@ -137,9 +140,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get post by id invalid id @smoke @regression @negative', async () => {
+    test('Get post by id invalid id @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostByIdEndpointInvalidId}', async () => {
+        await allure.step('Send GET request to ' + getPostByIdEndpointInvalidId, async () => {
             const response = await apiHelper.get(getPostByIdEndpointInvalidId);
             
             await allure.step('Verify response status is 404', async () => {
@@ -155,9 +158,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get by comments by id @smoke @regression', async () => {
+    test('Get by comments by id @smoke @regression @get @positive', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostByIdCommentsEndpoint}', async () => {
+        await allure.step('Send GET request to ' + getPostByIdCommentsEndpoint, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpoint);
             
             await allure.step('Verify response status is 200', async () => {
@@ -168,12 +171,14 @@ test.describe('GET Endpoints API tests', () => {
             //console.log(body);
             await allure.step('Verify response body contains required fields', async () => {
                 for(let bodyobj of body) {
+                    // Verify response body contains required fields
                 expect(bodyobj).toHaveProperty('postId');
                 expect(bodyobj).toHaveProperty('id');
                 expect(bodyobj).toHaveProperty('name');
                 expect(bodyobj).toHaveProperty('email');
                 expect(bodyobj).toHaveProperty('body');
 
+                // Verify response body fields types
                 expect(typeof bodyobj.postId).toBe('number');
                 expect(typeof bodyobj.id).toBe('number');
                 expect(typeof bodyobj.name).toBe('string');
@@ -191,9 +196,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid endpoint path @smoke @regression @negative', async () => {
+    test('Get comments by id: invalid endpoint path @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostByIdCommentsEndpointInvalidPosts}', async () => {
+        await allure.step('Send GET request to ' + getPostByIdCommentsEndpointInvalidPosts, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpointInvalidPosts);
             
             await allure.step('Verify response status is 404', async () => {
@@ -209,9 +214,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid endpoint @smoke @regression @negative', async () => {
+    test('Get comments by id: invalid endpoint @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostByIdCommentsEndpointInvalidComments}', async () => {
+        await allure.step('Send GET request to ' + getPostByIdCommentsEndpointInvalidComments, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpointInvalidComments);
             
             await allure.step('Verify response status is 404', async () => {
@@ -227,9 +232,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid id @smoke @regression @negative', async () => {
+    test('Get comments by id: invalid id @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getPostByIdCommentsEndpointInvalidId}', async () => {
+        await allure.step('Send GET request to ' + getPostByIdCommentsEndpointInvalidId, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpointInvalidId);
             
             await allure.step('Verify response status is 404', async () => {
@@ -245,9 +250,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get by comments by postId @smoke @regression', async () => {
+    test('Get by comments by postId @smoke @regression @get @positive', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getCommentsByPostIdEndpoint}', async () => {
+        await allure.step('Send GET request to ' + getCommentsByPostIdEndpoint, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpoint);
             
             await allure.step('Verify response status is 200', async () => {
@@ -258,12 +263,14 @@ test.describe('GET Endpoints API tests', () => {
             //console.log(body);
             await allure.step('Verify response body contains required fields', async () => {
                 for(let bodyobj of body) {
+                // Verify response body contains required fields
                 expect(bodyobj).toHaveProperty('postId');
                 expect(bodyobj).toHaveProperty('id');
                 expect(bodyobj).toHaveProperty('name');
                 expect(bodyobj).toHaveProperty('email');
                 expect(bodyobj).toHaveProperty('body');
 
+                // Verify response body fields types
                 expect(typeof bodyobj.postId).toBe('number');
                 expect(typeof bodyobj.id).toBe('number');
                 expect(typeof bodyobj.name).toBe('string');
@@ -281,9 +288,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid id in query paramiter @smoke @regression @negative', async () => {
+    test('Get comments by id: invalid id in query paramiter @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getCommentsByPostIdEndpointInvalidQuieryParamiter}', async () => {
+        await allure.step('Send GET request to ' + getCommentsByPostIdEndpointInvalidQuieryParamiter, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpointInvalidQuieryParamiter);
             
             await allure.step('Verify response status is 404', async () => {
@@ -299,9 +306,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid endpoint and query paramiter @smoke @regression @negative', async () => {
+    test('Get comments by id: invalid endpoint and query paramiter @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getCommentsByPostIdEndpointInvalid}', async () => {
+        await allure.step('Send GET request to ' + getCommentsByPostIdEndpointInvalid, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpointInvalid);
             
             await allure.step('Verify response status is 404', async () => {
@@ -317,9 +324,9 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid name of query paramiter @smoke @regression @negative', async () => {
+    test('Get comments by id: invalid name of query paramiter @smoke @regression @get @negative', async () => {
         // Add allure steps
-        await allure.step('Send GET request to {getCommentsByPostIdEndpointInvalid}', async () => {
+        await allure.step('Send GET request to ' + getCommentsByPostIdEndpointInvalid, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpointInvalid);
             
             await allure.step('Verify response status is 404', async () => {
