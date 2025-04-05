@@ -29,7 +29,7 @@ export class PutBodyTestDataGenerator {
             id: Math.floor(Math.random() * 1000),
             title: 'Test title date:' + new Date().toLocaleString("en-GB"),
             body: 'Test body date:' + new Date().toLocaleString("en-GB"),
-            userId: Math.floor(Math.random() * 1000),
+            userId: Math.floor(Math.random() * 100),
         }
     
     }

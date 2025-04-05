@@ -23,7 +23,7 @@ export class PostBodyTestDataGenerator {
 
     static generatePostResponceBody(): PostRequestBodyObjectModel {
         return {
-            userId: Math.floor(Math.random() * 1000),
+            userId: Math.floor(Math.random() * 100),
             title: 'Test title date:' + new Date().toLocaleString("en-GB"),
             body: 'Test body date:' + new Date().toLocaleString("en-GB"),
         }

@@ -19,7 +19,7 @@ test.describe('DELETE Endpoint API tests', () => {
 
     test('[TC-DELETE-001] Delete comments by id @smoke @regression @delete @positive', async () => {
         allure.testCaseId('TC-DELETE-001');
-        // Add allure steps
+
         await allure.step('Send DELETE request to ' + deletePostEndpoint, async () => {
             const response = await apiHelper.delete(deletePostEndpoint);
             
@@ -38,7 +38,7 @@ test.describe('DELETE Endpoint API tests', () => {
 
     test('[TC-DELETE-002] Delete comments by id: invalid endpoint @smoke @regression @delete @negative', async () => {
         allure.testCaseId('TC-DELETE-002');
-        // Add allure steps
+
         await allure.step('Send DELETE request to ' + deletePostEndpointInvalid, async () => {
             const response = await apiHelper.delete(deletePostEndpointInvalid);
             
@@ -57,7 +57,7 @@ test.describe('DELETE Endpoint API tests', () => {
 
     test('[TC-DELETE-003] Delete comments by id: invalid id @smoke @regression @delete @negative', async () => {
         allure.testCaseId('TC-DELETE-003');
-        // Add allure steps
+
         await allure.step('Send DELETE request to ' + deletePostInvalidId, async () => {
             const response = await apiHelper.delete(deletePostInvalidId);
             
@@ -76,7 +76,7 @@ test.describe('DELETE Endpoint API tests', () => {
 
     test('[TC-DELETE-004] Delete comments by id: id not present @smoke @regression @delete @negative', async () => {
         allure.testCaseId('TC-DELETE-004');
-        // Add allure steps
+
         await allure.step('Send DELETE request to ' + deletePostNoId, async () => {
             const response = await apiHelper.delete(deletePostNoId);
             

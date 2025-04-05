@@ -15,11 +15,16 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.51.1",
+    "@types/nock": "^10.0.3",
     "@types/node": "^22.14.0",
     "allure-commandline": "^2.33.0",
     "allure-playwright": "^3.2.1",
     "experimental-allure-playwright": "^0.0.3",
+    "nock": "^14.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "msw": "^2.7.3"
   }
 }

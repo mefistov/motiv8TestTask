@@ -35,7 +35,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('[TC-POST-001] Post new post with default data @smoke @regression @post @positive', async () => {
         allure.testCaseId('TC-POST-001');
-        // Add allure steps
+
         await allure.step('Send Post request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postBodyDefault);
             
@@ -76,7 +76,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('[TC-POST-002] Post new post with generated data @smoke @regression @post @positive', async () => {
         allure.testCaseId('TC-POST-002');
-        // Add allure steps
+
         await allure.step('Send Post request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postBodyGenerated);
             
@@ -117,7 +117,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('[TC-POST-003] Post new post with empty body parameters @smoke @regression @positive @post @negative', async () => {
         allure.testCaseId('TC-POST-003');
-        // Add allure steps
+
         await allure.step('Send GET request to '+ postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postEmptyBodyProperties);
             
@@ -136,7 +136,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('[TC-POST-004] Post new post with empty body @smoke @regression @positive @post @negative', async () => {
         allure.testCaseId('TC-POST-004');
-        // Add allure steps
+
         await allure.step('Send GET request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postEmptyBody);
             
@@ -155,7 +155,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('[TC-POST-005] Post new post with invalid body parameters types @smoke @regression @positive @post @negative', async () => {
         allure.testCaseId('TC-POST-005');
-        // Add allure steps
+
         await allure.step('Send GET request to ' + postEndpoint, async () => {
             const response = await apiHelper.post(postEndpoint, postBodyInvalidPropertysTypes);
             
@@ -174,7 +174,7 @@ test.describe('POST Endpoint API tests', () => {
 
     test('[TC-POST-006] Post new post with invalid endpoint value and default body @smoke @regression @positive @post @negative', async () => {
         allure.testCaseId('TC-POST-006');
-        // Add allure steps
+
         await allure.step('Send GET request to ' + postEndpointInvalid, async () => {
             const response = await apiHelper.post(postEndpointInvalid, postBodyDefault);
             
