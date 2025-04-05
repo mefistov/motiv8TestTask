@@ -155,6 +155,31 @@ npm run allure:report
    - Expected Status: 404
    - Validates: Error response structure
 
+   ### Test Flow Description
+
+1. **Create Post** 
+   - Makes a real POST request to create a new post
+   - Verifies successful creation (Status: 201)
+   - Validates response body fields (userId, title, body)
+   - Stores the created post's ID for subsequent tests
+
+2. **Update Post**
+   - Uses mock (nock) to simulate PUT request
+   - Updates the previously created post
+   - Verifies successful update (Status: 200)
+   - Validates response matches the update data
+   - Mocked to ensure test isolation and predictable behavior
+
+3. **Get Post**
+   - Retrieves the post by ID
+   - Verifies successful retrieval (Status: 200)
+   - Validates response contains correct post data
+
+4. **Delete Post**
+   - Deletes the created post
+   - Verifies successful deletion (Status: 200)
+
+
 
 ## Test Categories
 - @smoke: Basic functionality tests
