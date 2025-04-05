@@ -2,7 +2,6 @@
 
 A structured API testing framework using Playwright.
 
-
 ## Setup
 
 1. Install dependencies:

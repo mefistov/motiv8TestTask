@@ -31,7 +31,8 @@ test.describe('GET Endpoints API tests', () => {
         apiHelper = new APIHelper(request);
     });
 
-    test('Get all posts @smoke @regression @get @positive', async () => {
+    test('[TC-GET-001] Get all posts @smoke @regression @get @positive', async () => {
+        allure.testCaseId('TC-GET-001');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostsEndpoint, async () => {
             const response = await apiHelper.get(getPostsEndpoint);
@@ -67,7 +68,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get all posts with invalid endpoint @smoke @regression @get @negative', async () => {
+    test('[TC-GET-002] Get all posts with invalid endpoint @smoke @regression @get @negative', async () => {
+        allure.testCaseId('TC-GET-002');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostsEndpointInvalid, async () => {
             const response = await apiHelper.get(getPostsEndpointInvalid);
@@ -85,7 +87,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get post by id @smoke @regression @get @positive', async () => {
+    test('[TC-GET-003] Get post by id @smoke @regression @get @positive', async () => {
+        allure.testCaseId('TC-GET-003');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostByIdEndpoint, async () => {
             const response = await apiHelper.get(getPostByIdEndpoint);
@@ -122,7 +125,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get post by id invalid endpoint @smoke @regression @get @negative', async () => {
+    test('[TC-GET-004] Get post by id invalid endpoint @smoke @regression @get @negative', async () => {
+        allure.testCaseId('TC-GET-004');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostByIdEndpointInvalid, async () => {
             const response = await apiHelper.get(getPostByIdEndpointInvalid);
@@ -140,7 +144,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get post by id invalid id @smoke @regression @get @negative', async () => {
+    test('[TC-GET-005] Get post by id invalid id @smoke @regression @get @negative', async () => {
+        allure.testCaseId('TC-GET-005');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostByIdEndpointInvalidId, async () => {
             const response = await apiHelper.get(getPostByIdEndpointInvalidId);
@@ -158,7 +163,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get by comments by id @smoke @regression @get @positive', async () => {
+    test('[TC-GET-006] Get by comments by id @smoke @regression @get @positive', async () => {
+        allure.testCaseId('TC-GET-006');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostByIdCommentsEndpoint, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpoint);
@@ -196,7 +202,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid endpoint path @smoke @regression @get @negative', async () => {
+    test('[TC-GET-007] Get comments by id: invalid endpoint path @smoke @regression @get @negative', async () => {
+        allure.testCaseId('TC-GET-007');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostByIdCommentsEndpointInvalidPosts, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpointInvalidPosts);
@@ -214,7 +221,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid endpoint @smoke @regression @get @negative', async () => {
+    test('[TC-GET-008] Get comments by id: invalid endpoint @smoke @regression @get @negative', async () => {
+        allure.allureId('TC-GET-008');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostByIdCommentsEndpointInvalidComments, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpointInvalidComments);
@@ -232,7 +240,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid id @smoke @regression @get @negative', async () => {
+    test('[TC-GET-009] Get comments by id: invalid id @smoke @regression @get @negative', async () => {
+        allure.testCaseId('TC-GET-009');
         // Add allure steps
         await allure.step('Send GET request to ' + getPostByIdCommentsEndpointInvalidId, async () => {
             const response = await apiHelper.get(getPostByIdCommentsEndpointInvalidId);
@@ -250,7 +259,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get by comments by postId @smoke @regression @get @positive', async () => {
+    test('[TC-GET-010] Get by comments by postId @smoke @regression @get @positive', async () => {
+        allure.testCaseId('TC-GET-010');
         // Add allure steps
         await allure.step('Send GET request to ' + getCommentsByPostIdEndpoint, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpoint);
@@ -288,7 +298,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid id in query paramiter @smoke @regression @get @negative', async () => {
+    test('[TC-GET-011] Get comments by id: invalid id in query paramiter @smoke @regression @get @negative', async () => {
+        allure.testCaseId('TC-GET-011');
         // Add allure steps
         await allure.step('Send GET request to ' + getCommentsByPostIdEndpointInvalidQuieryParamiter, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpointInvalidQuieryParamiter);
@@ -306,7 +317,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid endpoint and query paramiter @smoke @regression @get @negative', async () => {
+    test('[TC-GET-012] Get comments by id: invalid endpoint and query paramiter @smoke @regression @get @negative', async () => {
+        allure.testCaseId('TC-GET-012');
         // Add allure steps
         await allure.step('Send GET request to ' + getCommentsByPostIdEndpointInvalid, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpointInvalid);
@@ -324,7 +336,8 @@ test.describe('GET Endpoints API tests', () => {
         });
     });
 
-    test('Get comments by id: invalid name of query paramiter @smoke @regression @get @negative', async () => {
+    test('[TC-GET-013] Get comments by id: invalid name of query paramiter @smoke @regression @get @negative', async () => {    
+        allure.testCaseId('TC-GET-013');
         // Add allure steps
         await allure.step('Send GET request to ' + getCommentsByPostIdEndpointInvalid, async () => {
             const response = await apiHelper.get(getCommentsByPostIdEndpointInvalid);
@@ -338,7 +351,7 @@ test.describe('GET Endpoints API tests', () => {
                 'API Response', 
                 JSON.stringify(response.status(), null, 2), 
                 'application/json'
-            );
+            );  
         });
     });
 

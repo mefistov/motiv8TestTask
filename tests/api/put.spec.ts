@@ -24,7 +24,8 @@ test.describe('PUT Endpoint API tests', () => {
         apiHelper = new APIHelper(request);
     });
 
-    test('Update new post with default data @smoke @regression @put @positive', async () => {
+    test('[TC-PUT-001] Update new post with default data @smoke @regression @put @positive', async () => {
+        allure.testCaseId('TC-PUT-001');
         // Add allure steps
         await allure.step('Send Post request to ' + putEndpoint, async () => {
             const response = await apiHelper.put(putEndpoint, putDefaultBody);
@@ -65,7 +66,8 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with random data @smoke @regression @put @positive', async () => {
+    test('[TC-PUT-002] Update new post with random data @smoke @regression @put @positive', async () => {
+        allure.testCaseId('TC-PUT-002');
         // Add allure steps
         await allure.step('Send Post request to ' + putEndpoint, async () => {
             const response = await apiHelper.put(putEndpoint, putRandomBodyData);
@@ -106,7 +108,8 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with random data and userId @smoke @regression @put @positive', async () => {
+    test('[TC-PUT-003] Update new post with random data and userId @smoke @regression @put @positive', async () => {
+        allure.testCaseId('TC-PUT-003');
         // Add allure steps
         await allure.step('Send Post request to ' + putEndpointRandomUserId, async () => {
             const response = await apiHelper.put(putEndpointRandomUserId, putRandomBodyData);
@@ -147,7 +150,8 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with empty body and valid userId @smoke @regression @put @positive', async () => {
+    test('[TC-PUT-004] Update new post with empty body and valid userId @smoke @regression @put @positive', async () => {
+        allure.testCaseId('TC-PUT-004');
         // Add allure steps
         await allure.step('Send Post request to ' + putEndpointRandomUserId, async () => {
             const response = await apiHelper.put(putEndpointRandomUserId, putEmptyBody);
@@ -179,7 +183,8 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with default data and invalid userId @smoke @regression @put @positive', async () => {
+    test('[TC-PUT-005] Update new post with default data and invalid userId @smoke @regression @put @positive', async () => {
+        allure.testCaseId('TC-PUT-005');
         // Add allure steps
         await allure.step('Send Post request to ' + putEndpointInvalidUserId, async () => {
             const response = await apiHelper.put(putEndpointInvalidUserId, putEmptyBody);
@@ -197,7 +202,8 @@ test.describe('PUT Endpoint API tests', () => {
         });
     });
 
-    test('Update new post with empty body and invalid userId @smoke @regression @put @positive', async () => {
+    test('[TC-PUT-006] Update new post with empty body and invalid userId @smoke @regression @put @positive', async () => {
+        allure.testCaseId('TC-PUT-006');
         // Add allure steps
         await allure.step('Send Post request to ' + putEndpointInvalidUserId, async () => {
             const response = await apiHelper.put(putEndpointInvalidUserId, putDefaultBody);
