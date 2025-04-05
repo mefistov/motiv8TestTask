@@ -6,11 +6,8 @@ on:
 
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-
-      matrix:
-        node-version: [18.x, 20.x]
 
     steps:
       - name: Checkout repository
