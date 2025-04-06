@@ -109,7 +109,7 @@ test.describe('GET Endpoints API tests', () => {
                 // Verify userId is equal to userId variable
                 expect(body.userId).toStrictEqual(userId);
 
-                // Verify id is equal to userId
+                // Verify fields types
                 expect(typeof body.userId).toBe('number');
                 expect(typeof body.id).toBe('number');
                 expect(typeof body.title).toBe('string');
